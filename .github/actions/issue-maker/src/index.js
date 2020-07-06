@@ -6,6 +6,11 @@ async function run() {
   const catFact = core.getInput("catFact");
 
   const token = core.getInput("repoToken");
+    console.log("access token: " + token);
+    if (!token) {
+      core.setFailed('cannot get accessToken');
+      return;
+    }
   try {
     const octokit = new github.GitHub(token);
 
